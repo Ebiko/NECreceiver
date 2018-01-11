@@ -17,10 +17,10 @@ unsigned long Nec_In(){
     
   i=0;
   while(1){
-    if(i > 5000 && !digitalRead(8))
+    if(i > 5000 && !digitalRead(8))   // 8 is one of the arduino pins
       break;
     if(i>6000)
-      return 992;
+      return 992;                     // the number 992 and the others is for debug, so I would know where the algorithm crashed.
     i++;
   }
   i=0;
