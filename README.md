@@ -16,8 +16,11 @@ extern "C" {
 };
 
 int RECV_PIN = 8;   // if you change the number 8 you must do it also in source file.
+
 void loop() {
+
   if (!digitalRead(RECV_PIN)) {
+  
     unsigned long decCode = Nec_In();
     
     // I got the number 16754775 from printing the decCode variable.
