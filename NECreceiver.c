@@ -15,13 +15,6 @@ unsigned long Nec_In(){
   pocet_bitov = 32;
   rusenieS = 255;
     
-//  for(i=0;i<rusenieS;i++){        //kontrola rusenia 74
-//    if(digitalRead(8)){
-//      return 9;
-//    }
-//      
-//  }
-//  delay(4);                     //čakanie na uplinutie start bitu
   i=0;
   while(1){
     if(i > 5000 && !digitalRead(8))
