@@ -15,12 +15,12 @@ unsigned long Nec_In(){
   pocet_bitov = 32;
   rusenieS = 255;
   
-  for(i=0;i<rusenieS;i++){        //kontrola rusenia 74
+  for(i=0;i<rusenieS;i++){        //reception error handling 74
     if(digitalRead(8)){
     return 9;
     }
   }
- delay(4);                     //čakanie na uplinutie start bitu
+ delay(4);                     //waitting for start bit to end
   i=0;
   while(1){
     if(i > 5000 && !digitalRead(8))   // 8 is one of the arduino pins
@@ -31,11 +31,11 @@ unsigned long Nec_In(){
   }
   i=0;
   j=0;
-  if(!digitalRead(8)){                      //cakanie na 1 po start bite
+  if(!digitalRead(8)){                      //waitting for one after start bit
     while(1){
       if(digitalRead(8))
         break;
-      if(j>1400){        //osetrenie chybneho bitu
+      if(j>1400){        //reception error handling
         return 993;}
       j++;  
     }
@@ -55,7 +55,7 @@ unsigned long Nec_In(){
         return 996;
       }
     }
-    if(j>1500)        //osetrenie chybneho bitu
+    if(j>1500)                  //reception error handling
       return 997;
     j++;
   }
@@ -80,7 +80,7 @@ unsigned long Nec_In(){
             break;
           }
         }
-        if(i>450)        //osetrenie chybneho bitu
+        if(i>450)        //reception error handling
           return 998;
         i++;
       }
@@ -88,7 +88,7 @@ unsigned long Nec_In(){
       j=0;
       pocet_bitov--;
     }
-    if(j>750)        //osetrenie chybneho bitu
+    if(j>750)        //reception error handling
       return 999;
     j++;
   }
